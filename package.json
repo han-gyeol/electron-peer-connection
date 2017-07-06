@@ -1,0 +1,15 @@
+{
+  "name": "electron-peer-connection",
+  "version": "1.0.0",
+  "description": "A wrapper for RTCPeerConnection between Electron BrowserWindows that does not require STUN server for signalling.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Electron",
+    "webRTC"
+  ],
+  "author": "Han <leook0209@gmail.com>",
+  "license": "ISC"
+}
