@@ -1,11 +1,13 @@
 # electron-peer-connection
 
-This module is a wrapper for RTCPeerConnection, suited for the inter-Electron BrowserWindow communication which does not require a STUN server for signalling. Signalling is done throught Electron's built-in ipc feature instead.
+This npm module is a wrapper for RTCPeerConnection, suited for the inter-Electron BrowserWindow communication which does not require a STUN server for signalling. Signalling is done throught Electron's built-in ipc feature instead.
+<br><br>
 
 ## Install
 ```
 $ npm install --save electron-peer-connection
 ```
+<br>
 
 ## Example
 
@@ -18,28 +20,30 @@ p2pChannel.addClient( { window: jitsiMeetWindow, name: 'jitsiMeetWindow' } );
 p2pChannel.addClient( { window: microWindow, name: 'microWindow' } );
 ```
 
-* window A
+* window A (Sender)
 ```javascript
 const WindowPeerConnection = require("electron-peer-connection").WindowPeerConnection;
 
-let mainWindow = new WindowPeerConnection('jitsiMeetWindow');
-mainWindow.attachStream(stream);
-mainWindow.sendStream('microWindow');
+let windowA = new WindowPeerConnection('windowA');
+windowA.attachStream(stream);
+windowA.sendStream('windowB');
 ```
 
-* window B
+* window B (Receiver)
 ```javascript
 const WindowPeerConnection = require("electron-peer-connection").WindowPeerConnection;
 
-let microWindow = new WindowPeerConnection('microWindow');
-microWindow.onReceivedStream(function (stream) {
-    largeVideo.srcObject = stream;
+let windowB = new WindowPeerConnection('windowB');
+windowB.onReceivedStream(function (stream) {
+    video.srcObject = stream;
 });
 ```
+<br>
 
 ## API
 
 ### Class: WindowPeerConnection
+<hr>
 
 #### Parameter
 
@@ -57,7 +61,10 @@ The WindowPeeerConnection wraps around webkitRTCPeerConnection class, which on c
 
 * <b>onReceivedStream ( function(receivedStream) ) </b>: triggered when the WindowPeerConnection receives a MediaStream from a remote window.
 
+<br>
+
 ### Main Process: Data Relay Channel
+<hr>
 
 A Javascript object that is called in the Electron’s main process. Since Electron does not support direct IPC between BrowserWindows, all messages and data must be relayed through the main process, using ipcMain. Each BrowserWindow is wrapped as a client in the data Channel.
 
@@ -66,6 +73,8 @@ A Javascript object that is called in the Electron’s main process. Since Elect
 * <b>addClient ( client ) </b>: adds a client on the data relay channel. A client is a Javascript object with the following format: <br> client = { window: browerWindowObject, name: "BrowserWindowName" }
 
 * <b>initChannel ( ) </b>: initiates the data relay channel with the current array of clients. Clients can be furthered added after the channel is initiated.
+
+<br>
 
 ## License
 MIT
