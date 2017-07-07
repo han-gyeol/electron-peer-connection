@@ -16,8 +16,9 @@ $ npm install --save electron-peer-connection
 const p2pChannel = require('electron-peer-connection').main;
 
 p2pChannel.initChannel();
-p2pChannel.addClient( { window: jitsiMeetWindow, name: 'jitsiMeetWindow' } );
-p2pChannel.addClient( { window: microWindow, name: 'microWindow' } );
+// windowA and windowB are previously initiated BrowserWindows
+p2pChannel.addClient( { window: windowA, name: 'windowA' } );
+p2pChannel.addClient( { window: windowB, name: 'windowB' } );
 ```
 
 * window A (Sender)

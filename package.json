@@ -1,6 +1,6 @@
 {
   "name": "electron-peer-connection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wrapper for RTCPeerConnection between Electron BrowserWindows that does not require STUN server for signalling.",
   "main": "index.js",
   "scripts": {
@@ -11,5 +11,9 @@
     "webRTC"
   ],
   "author": "Han <leook0209@gmail.com>",
-  "license": "ISC"
+  "url": "https://github.com/leook0209/electron-peer-connection",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "*"
+  }
 }
