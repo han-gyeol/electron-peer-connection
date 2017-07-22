@@ -73,7 +73,11 @@ A Javascript object that is called in the Electron’s main process. Since Elect
 
 * <b>addClient ( client ) </b>: adds a client on the data relay channel. A client is a Javascript object with the following format: <br> client = { window: browerWindowObject, name: "BrowserWindowName" }
 
+* <b>removeClient ( clientName ) </b>: removes a client with the given window name from the data relay channel.
+
 * <b>initChannel ( ) </b>: initiates the data relay channel with the current array of clients. Clients can be furthered added after the channel is initiated.
+
+* <b>dispose ( ) </b>: disposes the data relay channel.
 
 <br>
 

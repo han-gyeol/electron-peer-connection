@@ -1,6 +1,6 @@
 {
   "name": "electron-peer-connection",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A wrapper for RTCPeerConnection between Electron BrowserWindows that does not require STUN server for signalling.",
   "main": "index.js",
   "scripts": {
